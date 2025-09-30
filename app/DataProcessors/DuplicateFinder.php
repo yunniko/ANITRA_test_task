@@ -1,0 +1,30 @@
+<?php
+
+namespace App\DataProcessors;
+
+use App\Providers\IntegerProviderInterface;
+use Barryvdh\Debugbar\Facades\Debugbar;
+use Ds\Map;
+use Ds\Set;
+
+class DuplicateFinder
+{
+    public function processData(IntegerProviderInterface $dataProvider): Map{
+        $result = new Map();
+        $temporarySet= new Set();
+        Debugbar::measure("Generation and processing", function() use ($result, $temporarySet, $dataProvider) {
+            while ($dataProvider->hasNext()) {
+                $n = $dataProvider->getNext();
+                if ($temporarySet->contains($n)) {
+                    $val = $result->get($n, 1);
+                    $result->put($n, $val + 1);
+                }
+                else $temporarySet->add($n);
+            }
+        });
+        Debugbar::measure("Sorting", function() use ($result) {
+            $result->ksort();
+        });
+        return $result;
+    }
+}
