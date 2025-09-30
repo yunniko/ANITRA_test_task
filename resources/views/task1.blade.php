@@ -36,8 +36,7 @@ Task 1
         but I was not happy about performance, so I decided to look for more specialized data types.
         Though using them improved memory usage a little bit, but did not improve timings.</p>
     <p>Also I decided to use pagination because the amount of
-        duplicates is huge and browser is not happy about it</p>
-    <p>To use pagination I had to store the result somewhere and cache was the first idea.
-    I store it "forever". The data is the same for all visitors. So is the update. That is far from
-    good solution, but for test task with limited users it should be enough</p>
+        duplicates is huge and browser was not happy about it</p>
+    <p>The better solution would be to use queries and chunk by chunk process the information on background
+    </p>
 @endsection

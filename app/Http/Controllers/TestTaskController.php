@@ -12,7 +12,7 @@ use Illuminate\Support\Facades\Cache;
 
 class TestTaskController extends Controller
 {
-    public function index(): string {
+    public function index() {
         return "index";
     }
 
@@ -38,10 +38,12 @@ class TestTaskController extends Controller
     }
 
 
-    public function task2(): string  {
-        return "t2";
+    public function task2()  {
+        return view('task2', [
+        ]);
     }
-    public function task3(): string  {
-        return "t3";
+    public function task3()  {
+        return view('task3', [
+        ]);
     }
 }
