@@ -44,4 +44,6 @@ Task 1
         duplicates is huge and browser was not happy about it</p>
     <p>The better solution would be to use queries and chunk by chunk process the information on background
     </p>
+    <hr>
+    <p><i>Kind of surprisingly, but on linux server the performance became much better</i></p>
 @endsection
