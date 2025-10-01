@@ -9,6 +9,6 @@ Task 3
     task 3
 @endsection
 
-@section('comments')
+@section('comment')
     Because of my cold it takes me more time to finish all tasks, so this one in progress yet.
 @endsection
