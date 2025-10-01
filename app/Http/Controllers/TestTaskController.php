@@ -3,9 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\API\SwApi;
-use App\API\SwTypes;
 use App\Models\Task1;
 use App\Models\Task2;
+use Illuminate\Http\Request;
 use Illuminate\Pagination\LengthAwarePaginator;
 use Illuminate\Pagination\Paginator;
 
@@ -38,10 +38,11 @@ class TestTaskController extends Controller
     }
 
 
-    public function task2()  {
+    public function task2(Request $request)  {
         $api = new SwApi();
+        $search = $request->query('search', 'Kashyyyk');
         $task2 = new Task2($api);
-        $starships = $task2->getStarshipsByPilotPlanet('Kashyyyk');
+        $starships = $task2->getStarshipsByPilotPlanet($search);
         return $starships;
     }
     public function task3()  {
