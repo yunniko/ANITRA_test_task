@@ -8,3 +8,7 @@ Task 3
 @section('content')
     task 3
 @endsection
+
+@section('comments')
+    Because of my cold it takes me more time to finish all tasks, so this one in progress yet.
+@endsection

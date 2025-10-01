@@ -41,7 +41,12 @@ $nav = [
 
 <div class="container">
     @hasSection('comment')
-        <div class="py-3">
+        <div class="py-2">
+            <button class="btn btn-secondary" type="button" data-bs-toggle="collapse" data-bs-target="#commentBody" aria-expanded="false" aria-controls="collapseExample">
+                Read comments to the task
+            </button>
+        </div>
+        <div class="py-3 collapse" id="commentBody">
             @yield('comment')
         </div>
     @endif
