@@ -11,5 +11,5 @@ Route::controller(TestTaskController::class)->group(function () {
     Route::get('/tasks/update/1', 'cacheTask1');
     Route::get('/tasks/2', 'task2');
     Route::get('/tasks/3', 'task3');
-    Route::get('/tasks', 'index');
+    Route::get('/', 'index');
 });

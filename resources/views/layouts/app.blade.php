@@ -12,7 +12,7 @@
         @section('sidebar')
             <nav class="navbar navbar-expand-lg bg-body-tertiary">
                 <div class="container-fluid">
-                    <a class="navbar-brand" href="/tasks">Julie Nikonorova, test tasks</a>
+                    <a class="navbar-brand" href="/">Julie Nikonorova, test tasks</a>
                     <div class="vr"></div>
                     <div class="collapse navbar-collapse" id="navbarNav">
                         <ul class="navbar-nav">

@@ -11,7 +11,7 @@ class IntegerGenerator implements IntegerProviderInterface
 
     private $amount;
 
-    private $i = -1;
+    private $i = 0;
 
     private $current;
 
