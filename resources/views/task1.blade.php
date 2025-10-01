@@ -7,17 +7,20 @@ Task 1
 
 <?php $data->useBootstrapFour(); ?>
 @section('content')
-    <a href="/tasks/update/1">GENERATE NEW SET</a>
-    <table class="table">
-        <thead>
-        <tr>
-            <th scope="col">Integer</th>
-            <th scope="col">Count of duplicates</th>
-        </tr>
-        </thead>
-        <tbody>
+    <div>
+        <a href="/tasks/update/1">GENERATE NEW SET</a>
+    </div>
+    <div>
+        <table class="table">
+            <thead>
+            <tr>
+                <th scope="col">Integer</th>
+                <th scope="col">Count of duplicates</th>
+            </tr>
+            </thead>
+            <tbody>
             @forelse ($data->items() as $integer => $duplicatesCount)
-                <tr>
+                <tr @if($duplicatesCount > 2) class="table-secondary" @endif>
                     <td>{{ $integer }}</td>
                     <td>{{ $duplicatesCount }}</td>
                 </tr>
@@ -26,9 +29,11 @@ Task 1
                     <td>No duplicates</td>
                 </tr>
             @endforelse
-        </tbody>
-    </table>
-    {{ $data->links() }}
+            </tbody>
+        </table>
+        {{ $data->links() }}
+    </div>
+
 @endsection
 
 @section('comment')

@@ -2,22 +2,22 @@
 
 namespace App\Http\Controllers;
 
-use App\DataGenerators\IntegerGenerator;
-use App\DataProcessors\DuplicateFinder;
+use App\API\SwApi;
+use App\API\SwTypes;
 use App\Models\Task1;
-use Barryvdh\Debugbar\Facades\Debugbar;
+use App\Models\Task2;
 use Illuminate\Pagination\LengthAwarePaginator;
 use Illuminate\Pagination\Paginator;
-use Illuminate\Support\Facades\Cache;
 
 class TestTaskController extends Controller
 {
     public function index() {
-        return "index";
+        return view('index');
     }
 
     public function task1() {
         $data = Task1::getData();
+        $data->ksort();
 
         $page = Paginator::resolveCurrentPage() ?: 1;
         $perPage = 20;
@@ -39,8 +39,10 @@ class TestTaskController extends Controller
 
 
     public function task2()  {
-        return view('task2', [
-        ]);
+        $api = new SwApi();
+        $task2 = new Task2($api);
+        $starships = $task2->getStarshipsByPilotPlanet('Kashyyyk');
+        return $starships;
     }
     public function task3()  {
         return view('task3', [

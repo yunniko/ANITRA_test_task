@@ -21,7 +21,6 @@ class DuplicateFinder
             }
             else $temporarySet->add($n);
         }
-        $result->ksort();
         return $result;
     }
 }
