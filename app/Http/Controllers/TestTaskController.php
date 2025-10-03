@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\API\SwApi;
 use App\Models\Task1;
 use App\Models\Task2;
+use App\Models\Task3;
+use Fhaculty\Graph\Graph;
 use Illuminate\Http\Request;
 use Illuminate\Pagination\LengthAwarePaginator;
 use Illuminate\Pagination\Paginator;
@@ -45,8 +47,26 @@ class TestTaskController extends Controller
         $starships = $task2->getStarshipsByPilotPlanet($search);
         return $starships;
     }
-    public function task3()  {
+
+    public function task3() {
+        $crew = Task3::buildCrew();
         return view('task3', [
+            'data' => $crew
+        ]);
+    }
+
+    public function task3a(Request $request)  {
+        $crew = Task3::buildCrew();
+        $commander = $request->query('commander', null);
+        return view('task3a', [
+            'commanderName' => $commander,
+            'crew' => $crew->getAllTeam($commander)
+        ]);
+    }
+    public function task3b()  {
+        $crew = Task3::buildCrew();
+        return view('task3', [
+            'data' => $crew->getAllCrewMembers()
         ]);
     }
 }

@@ -29,7 +29,7 @@ $nav = [
                 <ul class="navbar-nav">
                     @foreach($nav as $url => $urlName)
                         <li class="nav-item">
-                            <a class="nav-link{{ (url()->current() == url()->to($url)) ? ' active border-bottom border-dark' : '' }}"
+                            <a class="nav-link{{ (stripos(url()->current(), url()->to($url)) === 0) ? ' active border-bottom border-dark' : '' }}"
                                href="{{ $url }}">{{ $urlName }}</a>
                         </li>
                     @endforeach
