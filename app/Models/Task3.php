@@ -32,4 +32,35 @@ class Task3 {
 
         return $crew;
     }
+
+    public static function simulateVirus (CrewMember $patientZero, $targetName) {
+        $sim = [];
+        $gen = 0;
+        $infected = [$patientZero];
+        $sim[$gen] = [$patientZero];
+        if ($patientZero->getName() == $targetName) return $sim;
+        while (true) {
+            $gen++;
+            $contacts = self::collectContacts($sim[$gen - 1]);
+            $nextGen = array_diff(array_unique($contacts), $infected);
+            if (empty($nextGen)) break;
+            $sim[$gen] = $nextGen;
+            $infected = array_merge($infected, $nextGen);
+            if (self::isNameInArray($nextGen, $targetName)) break;
+        }
+        return $sim;
+    }
+    protected static function isNameInArray($crewMembers, $name) {
+        foreach ($crewMembers as $crewMember) {
+            if ($crewMember->getName() == $name) return true;
+        }
+        return false;
+    }
+    protected static function collectContacts($crewMembers) {
+        $contacts = [];
+        foreach ($crewMembers as $infected) {
+            $contacts = array_merge($contacts, $infected->getContacts());
+        }
+        return $contacts;
+    }
 }

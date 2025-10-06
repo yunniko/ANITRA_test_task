@@ -63,10 +63,14 @@ class TestTaskController extends Controller
             'crew' => $crew->getAllTeam($commander)
         ]);
     }
-    public function task3b()  {
+    public function task3b(Request $request)  {
         $crew = Task3::buildCrew();
-        return view('task3', [
-            'data' => $crew->getAllCrewMembers()
+        $commanderName = $request->query('commander', null);
+        $targetName = $request->query('target', 'Jean Luc Picard');
+        $commander = $crew->findMember($commanderName);
+        return view('task3b', [
+            'commander' => $commander,
+            'infection' => Task3::simulateVirus($commander, $targetName)
         ]);
     }
 }

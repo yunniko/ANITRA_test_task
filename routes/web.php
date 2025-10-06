@@ -12,5 +12,6 @@ Route::controller(TestTaskController::class)->group(function () {
     Route::get('/tasks/2', 'task2');
     Route::get('/tasks/3', 'task3');
     Route::get('/tasks/3/crew', 'task3a');
+    Route::get('/tasks/3/virus', 'task3b');
     Route::get('/', 'index');
 });

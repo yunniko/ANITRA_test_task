@@ -94,4 +94,12 @@ class CrewMember
         }
         return array_values($result);
     }
+
+
+    public function getContacts() {
+        $contacts = $this->getTeam();
+        if ($this->getCommander())
+            $contacts[] = $this->getCommander();
+        return $contacts;
+    }
 }

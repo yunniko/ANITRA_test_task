@@ -28,6 +28,7 @@ class Crew
         return $crewMember?->getAllTeam();
     }
 
+
     public function addMember($name, $commander) {
         $commander = $this->findMember($commander);
         if ($commander) new CrewMember($name, $commander);
